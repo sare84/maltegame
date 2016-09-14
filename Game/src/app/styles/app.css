@@ -26,3 +26,9 @@
 	text-align: center;
 	line-height: 56px;
 }
+
+.maulwurfnSpielfeld {
+	float: left;
+	width: 360px;
+	height: 360px;
+}
