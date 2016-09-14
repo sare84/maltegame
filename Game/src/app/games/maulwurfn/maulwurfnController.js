@@ -6,6 +6,7 @@
      * @public
      *
      * @param $scope
+     * @param $interval
      */
     function maulwurfnController($scope ,$interval) {
 
@@ -38,8 +39,8 @@
         $scope.resources = null;
         $scope.playArea = []; 
         $scope.intervalTime = 1000; 
-        $scope.playAreaSizeX = 3; 
-        $scope.playAreaSizeY = 3; 
+        $scope.playAreaSizeX = 5; 
+        $scope.playAreaSizeY = 5; 
         $scope.score  = 0; 
         $scope.live = 3; 
         $scope.gameState = gameStates.NOTSTARTED; 
@@ -154,12 +155,13 @@
 
         $scope.setStyling = function(item) {
             if (item.state === itemStates.MAULWURF)
-                return {"backgroundColor": "#FF0000"};
+                return "circle maulwurfField";  
             else if (item.state === itemStates.MALTE)
-                return {"backgroundColor" : "#33cc33"}
+                return "circle malteField";
             else 
-                return {"backgroundColor":"#A3A3A3"};
+                return "circle emptyField";
         }
+
 
         $scope.isStarted = function(){
             if ($scope.gameState === gameStates.STARTED )

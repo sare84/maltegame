@@ -1,33 +1,63 @@
-<h1>Maulwurfn!! The GAME</h1>
-<div>
-    <span>Score: {{score}}</span>
-</div>
-<div>
-    <span>Leben: {{live}}</span>
-</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12">
+            <h1>Maulwurfn!!</h1>
+        </div>
+    </div>
 
-<div ng-show="isStarted()" class="maulwurfnSpielfeld">
-    <div class="row" ng-repeat="row in playArea">
-        <div class="square" ng-repeat="item in row track by $index" ng-click="select(item)">
-            <div class="circle" ng-style="setStyling(item)">
-                <span>{{item.text}}</span>
+
+    <div class="row">
+        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12">
+            <span style="font-size:24px;">Score: </span> <span style="font-size:24px;" class="badge">{{score}}</span>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12">
+            <span style="font-size:24px;">Leben: </span> <span style="font-size:24px;" class="badge">{{live}}</span>
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="row">
+        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12">
+            <div ng-show="isStarted()" class="maulwurfnSpielfeld">
+                <div class="row" ng-repeat="row in playArea">
+                    <div class="square" ng-repeat="item in row track by $index" ng-click="select(item)">
+                        <div ng-class="setStyling(item)">
+                            <span>{{item.text}}</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div ng-show="!isStarted()" class="maulwurfnSpielfeld">
-    <div ng-show="isGameOver()">
-        GAME OVER!!!
+
+    <div class="row">
+        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12">
+            <div ng-show="!isStarted()" class="maulwurfnSpielfeld">
+                <div ng-show="isGameOver()" >
+                    <span style="font-size:24px;" class="label label-danger">GAME OVER!!!</span>
+                </div>
+                <div ng-show="!isGameOver()"  >
+                    <span style="font-size:24px;" class="text-center label label-primary">Spiel ist nicht gestartet! </span>
+                </div>    
+            </div>
+        </div>
     </div>
-    <div ng-show="!isGameOver()">
-        Spiel ist nicht gestartet! 
+
+
+    <div class="row">
+        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12">
+            <!-- Event trigger to start the interval -->
+            <button type="button" style="font-size:24px;" class="btn btn-primary fa fa-play fa-3" ng-click="start()"> Start Spiel</button>
+
+            <!-- Event trigger to stop the interval -->
+            <button type="button" style="font-size:24px;" class="btn btn-danger fa fa-stop fa-3" ng-click="stop()"> Stoppe Spiel</button>
+        </div>
     </div>
-    
 </div>
-
-<!-- Event trigger to start the interval -->
-<button type="button" ng-click="start()">Start Interval</button>
-
-<!-- Event trigger to stop the interval -->
-<button type="button" ng-click="stop()">Stop Interval</button>

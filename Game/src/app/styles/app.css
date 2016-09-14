@@ -7,6 +7,7 @@
 }
 
 .square {
+	background-color:#33cc33; 
 	float: left;
 	width: 60px;
 	height: 60px;
@@ -28,7 +29,20 @@
 }
 
 .maulwurfnSpielfeld {
-	float: left;
-	width: 360px;
-	height: 360px;
+	float: center;
+	width: 500px;
+	height: 500px;
+}
+
+.emptyField {
+	background-color:#33cc33; 
+}
+
+.malteField{
+	background-color:#8B4513; 	
+}
+
+.maulwurfField{
+	background-color:#000000; 	
+	color: red; 
 }
