@@ -20,22 +20,30 @@
                 controller: "mainController",
             })
             .state(
-            'all.resources', {
-                url: "/resources",
-                templateUrl: "resources/resources.html",
-                controller: "resourceController",
+            'all.about', {
+                url: "/about",
+                templateUrl: "about/about.html",
+                controller: "aboutController",
             })
             .state(
-            'all.gather', {
-                url: "/gather",
-                templateUrl: "gatherResources/gatherResources.html",
-                controller: "gatherResourcesController"
+            'all.play', {
+                url: "/play",
+                templateUrl: "play/play.html",
+                controller: "playController"
             })
             .state(
             'all.stats', {
                 url: "/stats",
                 templateUrl: "stats/stats.html",
                 controller: "statsController"
+            })
+
+
+            .state(
+            'all.maulwurfn', {
+                url: "/game/maulwurfn",
+                templateUrl: "games/maulwurfn/maulwurfn.html",
+                controller: "maulwurfnController"
             })
 
         ;

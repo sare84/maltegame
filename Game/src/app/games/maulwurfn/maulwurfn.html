@@ -1,0 +1,13 @@
+<h1>Maulwurfn!! The GAME</h1>
+    <div>
+        <span>Score: {{score}}</span>
+    </div>
+      <div>
+          <div class="row" ng-repeat="row in playArea">
+              <div class="square" ng-repeat="item in row track by $index" ng-click="select(item)">
+                <div class="circle" ng-style="setStyling(item)">
+                  <span>{{item.text}}</span>
+                </div>
+              </div>
+          </div>
+      </div>

@@ -1,10 +1,10 @@
 !function ($, jQuery) {
     "use strict";
 
-    app.module.directive('resourceItem', function () {
+    app.module.directive('gameItem', function () {
         return {
             restrict: 'E',
-            templateUrl: 'directives/resourceItem/resourceItem.html',
+            templateUrl: 'directives/gameItem/gameItem.html',
             scope: {
                 itemtext: '@',
                 value: '=',
