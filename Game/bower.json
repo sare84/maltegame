@@ -1,0 +1,51 @@
+{
+  "name": "clickgame",
+  "version": "0.0.1",
+  "authors": [
+    "sare <reichert.sascha@googlemail.com>"
+  ],
+  "description": "Clicker game",
+  "keywords": [
+    "Idle",
+    "Click"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.1",
+    "admin-lte": "~2.1.2",
+    "jquery": "~2.1.4",
+    "font-awesome": "~4.3.0",
+    "angular-ui-router": "~0.2.15"
+  },
+  "overrides": {
+    "angular": {
+      "main": "angular.min.js"
+    },
+    "jquery": {
+      "main": "dist/jquery.min.js"
+    },
+    "angular-ui-router": {
+      "main": "release/angular-ui-router.min.js"
+    },
+    "admin-lte": {
+      "dependencies": {
+        "jquery": "~2.1.4"
+      },
+      "main": [
+        "bootstrap/js/bootstrap.min.js",
+        "dist/js/app.min.js",
+        "bootstrap/css/bootstrap.css",
+        "dist/css/AdminLTE.css",
+        "dist/css/skins/skin-blue.css"
+
+      ]
+    }
+  }
+}

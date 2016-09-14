@@ -1,2 +1,6 @@
 Test/angular2-quickstart/node_modules/
 Test/angular2-quickstart/typings/
+Game/node_modules/node-uuid/LICENSE.md
+Game/node_modules/
+Game/bower_components/
+Game/build/

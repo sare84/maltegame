@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ClickGame</title>
+    <link rel="stylesheet" href="styles/vendor.css" />
+    <link rel="stylesheet" href="styles/app.css" />
+
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+</head>
+<body class="skin-blue sidebar-mini" ng-app="clickgame">
+    <div class="wrapper">
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="/" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+
+                <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg">
+            </span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+            </nav>
+        </header>
+
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu">
+                    <li class="active treeview">
+                        <ul class="sidebar-menu">
+                            <li><a ui-sref="all.main"><i class="fa fa-home"></i> <span>Home</span> </a></li>
+                            <li><a ui-sref="all.play"><i class="fa fa-hand-o-up"></i> <span>Play</span> </a> </li>
+                            <li><a ui-sref="all.resources"><i class="fa fa-cube"></i> <span>Resources</span></a></li>
+                            <li><a ui-sref="all.buildings"><i class="fa fa-home"></i><span> Buildings</span> </a> </li>
+                            <li><a ui-sref="all.stats"><i class="fa fa-bar-chart"></i><span> Stats</span></a></li>
+                            <li><a ui-sref="all.archivments"><i class="fa fa-trophy"></i><span> Archivments </span></a> </li>
+                            <li><a ui-sref="all.settings"><i class="fa fa-cog"></i><span> Settings </span></a> </li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <!-- Main content -->
+            <section class="content">
+                <ui-view></ui-view>
+            </section><!-- /.content -->
+        </div><!-- /.content-wrapper -->
+
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 0.0.1
+            </div>
+            <strong>Copyright &copy; 2015 sare.</strong> All rights reserved.
+        </footer>
+
+    </div>
+    <script type="text/javascript" src="scripts/vendor.js"></script>
+   <script type="text/javascript" src="scripts/templates.js"></script>
+    <script type="text/javascript" src="scripts/app.js"></script>
+</body>
+</html>
