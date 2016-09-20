@@ -23,8 +23,8 @@
         <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12">
             <div ng-show="isStarted()" class="maulwurfnSpielfeld">
                 <div class="row" ng-repeat="row in playArea">
-                    <div ng-class="item.background" ng-repeat="item in row track by $index" ng-click="select(item)">
-                        <div ng-class="setStyling(item)">
+                    <div ng-class="item.fieldBackground" ng-repeat="item in row track by $index" ng-click="select(item)">
+                        <div ng-class="item.styling">
                             <span>{{item.text}}</span>
                         </div>
                     </div>

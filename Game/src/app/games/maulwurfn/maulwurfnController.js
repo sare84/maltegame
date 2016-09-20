@@ -28,9 +28,10 @@
         function Item(x, y) {
             this.x = x;
             this.y = y;
-            this.text = ''; 
-            this.background = $scope.setBackground(); 
             this.state = itemStates.EMPTY ; 
+            this.fieldBackground = $scope.setFieldBackground(); 
+            this.styling = $scope.setStyling( itemStates.EMPTY); 
+            
         }
 
         // store the interval promise in this variable
@@ -47,15 +48,12 @@
         $scope.gameState = gameStates.NOTSTARTED; 
 
         var init = function(){
-            console.log("maulwurfnControllerScope:init");
-
             $scope.resetPlayGround(); 
-            console.log($scope.playArea);
         }
 
-// ************************************************************************ 
-// interval mechanics  
-// ************************************************************************        
+        // ************************************************************************ 
+        // interval mechanics  
+        // ************************************************************************        
 
         // starts the interval
         // sets some more vars for the game 
@@ -73,11 +71,9 @@
             $interval.cancel(promise);
             $scope.gameState = gameStates.NOTSTARTED; 
         };
-
         
         // Interval magic 
         $scope.callAtInterval = function() {
-            console.log("$scope.callAtInterval - Interval occurred");
             $scope.resetPlayGround(); 
             $scope.setMaulwurf(); 
             $scope.setMalte(); 
@@ -88,9 +84,9 @@
             $interval.cancel(promise);
         });
 
-// ************************************************************************ 
-// logical game mechanics  
-// ************************************************************************
+        // ************************************************************************ 
+        // logical game mechanics  
+        // ************************************************************************
 
         // reset the playground 
         $scope.resetPlayGround = function() {
@@ -107,8 +103,8 @@
         $scope.setMaulwurf = function(){
             var mwX = getRandomInt(1, $scope.playAreaSizeX) - 1
             var mwY = getRandomInt(1, $scope.playAreaSizeY) - 1 
-            $scope.playArea[mwX][mwY].text = 'MW'; 
             $scope.playArea[mwX][mwY].state = itemStates.MAULWURF; 
+            $scope.playArea[mwX][mwY].styling = $scope.setStyling($scope.playArea[mwX][mwY].state); 
         }
 
         // set the dog to the playground 
@@ -119,8 +115,8 @@
                 $scope.setMalte(); 
                 return; 
             }
-            $scope.playArea[mwX][mwY].text = 'WUFF'; 
             $scope.playArea[mwX][mwY].state = itemStates.MALTE; 
+            $scope.playArea[mwX][mwY].styling = $scope.setStyling($scope.playArea[mwX][mwY].state); 
         }
 
         // check gameover state 
@@ -131,44 +127,45 @@
             }
         }
 
-// ************************************************************************ 
-// Gui Functions 
-// ************************************************************************
+        // ************************************************************************ 
+        // Gui Functions 
+        // ************************************************************************
 
-
+        // item is selected -> game mechanic 
         $scope.select = function(item) {
             if (item.state === itemStates.MAULWURF) {
+                item.state = itemStates.EMPTY; 
+                item.styling = $scope.setStyling(itemStates.EMPTY); 
                 $scope.score += 1; 
-            } else if (item.state === itemStates.MALTE) {
-                
+            } else if (item.state === itemStates.MALTE) {                
                 $scope.score -= 5;
                 $scope.live -= 1; 
                 $scope.checkGameOver();  
             } else {
                 $scope.score -= 1; 
             }
-            console.log(item);
         }
 
-
-
         // Styling and mode functions for gui 
-
-        $scope.setStyling = function(item) {
-            if (item.state === itemStates.MAULWURF)
-                return "circle maulwurfField";  
-            else if (item.state === itemStates.MALTE)
+        $scope.setStyling = function(state) {
+            if (state === itemStates.MAULWURF){
+                var rnd = getRandomInt(1,2); 
+                return "circle maulwurfField" + rnd;
+            }  
+            else if (state === itemStates.MALTE)
                 return "circle malteField";
             else 
                 return "circle emptyField";
         }
 
-        $scope.setBackground = function() {
+        // sets the field background 
+        // function used to alternate the pics 
+        $scope.setFieldBackground = function() {
             var rnd = getRandomInt(0,5); 
             return "square" + rnd; 
         }
 
-
+        // checks if game is started 
         $scope.isStarted = function(){
             if ($scope.gameState === gameStates.STARTED )
                 return true; 
@@ -176,6 +173,7 @@
                 return false; 
         }
 
+        // checks if the game ist game over 
         $scope.isGameOver = function(){
             if ($scope.gameState === gameStates.GAMEOVER )
                 return true; 
@@ -183,10 +181,9 @@
                 return false; 
         }
 
-// ************************************************************************ 
-// helper functions 
-// ************************************************************************
-
+        // ************************************************************************ 
+        // helper functions 
+        // ************************************************************************
 
         /**
          * Returns a random integer between min (inclusive) and max (inclusive)
@@ -195,7 +192,6 @@
         function getRandomInt(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
-
 
 
         init();

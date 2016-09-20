@@ -92,10 +92,21 @@
 }
 
 .malteField{
-	background-color:#8B4513; 	
+	background-image: url("../assets/malte2.jpg");  
+	background-size: 60px 60px;	
 }
 
 .maulwurfField{
-	background-color:#000000; 	
-	color: red; 
+	background-image: url("../assets/maulwurf1.jpg");  
+	background-size: 60px 60px;
+}
+
+.maulwurfField1{
+	background-image: url("../assets/maulwurf1.jpg");  
+	background-size: 60px 60px;
+}
+
+.maulwurfField2{
+	background-image: url("../assets/maulwurf2.jpg");  
+	background-size: 60px 60px;
 }
