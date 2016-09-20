@@ -33,6 +33,12 @@ gulp.task("copy-languages", function(){
         .pipe(gulp.dest("build"));
 });
 
+
+gulp.task("copy-pics", function(){
+    return gulp.src("src/app/assets/*")
+        .pipe(gulp.dest("build/assets/"));
+});
+
 gulp.task("copy-fonts", function () {
     return gulp.src(["bower_components/admin-lte/bootstrap/fonts/**.*",
         "bower_components/font-awesome/fonts/**.*"])
@@ -95,7 +101,8 @@ gulp.task("build", function (cb) {
         "build-template-cache",
         "build-app-js",
         "build-app-css",
-        "copy-fonts"
+        "copy-fonts",
+        "copy-pics"
     ], cb);
 });
 
