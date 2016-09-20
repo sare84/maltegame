@@ -2,7 +2,7 @@
     "use strict";
 
     /**
-     * @constructoru
+     * @constructor
      * @public
      *
      * @param $scope
@@ -29,6 +29,7 @@
             this.x = x;
             this.y = y;
             this.text = ''; 
+            this.background = $scope.setBackground(); 
             this.state = itemStates.EMPTY ; 
         }
 
@@ -38,9 +39,9 @@
         // setting some data 
         $scope.resources = null;
         $scope.playArea = []; 
-        $scope.intervalTime = 1000; 
-        $scope.playAreaSizeX = 5; 
-        $scope.playAreaSizeY = 5; 
+        $scope.intervalTime = 2500; 
+        $scope.playAreaSizeX = 3; 
+        $scope.playAreaSizeY = 3; 
         $scope.score  = 0; 
         $scope.live = 3; 
         $scope.gameState = gameStates.NOTSTARTED; 
@@ -160,6 +161,11 @@
                 return "circle malteField";
             else 
                 return "circle emptyField";
+        }
+
+        $scope.setBackground = function() {
+            var rnd = getRandomInt(0,5); 
+            return "square" + rnd; 
         }
 
 

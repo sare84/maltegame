@@ -6,12 +6,64 @@
 	width: 100%;
 }
 
-.square {
-	background-color:#33cc33; 
+.square {	
+
+	background-color: green; 
+	background-size: 60px 60px;
 	float: left;
 	width: 60px;
 	height: 60px;
 }
+
+.square0 {	
+	background-image: url("../assets/nix00.jpg");  
+	background-size: 60px 60px;
+	float: left;
+	width: 60px;
+	height: 60px;
+}
+
+.square1 {	
+	background-image: url("../assets/nix01.jpg");  
+	background-size: 60px 60px;
+	float: left;
+	width: 60px;
+	height: 60px;
+}
+
+.square2 {	
+	background-image: url("../assets/nix02.jpg");  
+	background-size: 60px 60px;
+	float: left;
+	width: 60px;
+	height: 60px;
+}
+
+.square3 {	
+	background-image: url("../assets/nix03.jpg");  
+	background-size: 60px 60px;
+	float: left;
+	width: 60px;
+	height: 60px;
+}
+
+.square4 {	
+	background-image: url("../assets/nix04.jpg");  
+	background-size: 60px 60px;
+	float: left;
+	width: 60px;
+	height: 60px;
+}
+
+.square5 {	
+	background-image: url("../assets/nix05.jpg");  
+	background-size: 60px 60px;
+	float: left;
+	width: 60px;
+	height: 60px;
+}
+
+	
 
 .square:hover {
 	cursor: pointer;
@@ -35,7 +87,8 @@
 }
 
 .emptyField {
-	background-color:#33cc33; 
+	
+	
 }
 
 .malteField{
