@@ -14,7 +14,8 @@
         var gameStates = {
             NOTSTARTED: 0,  // game not started yet 
             STARTED: 1,     // game is started 
-            GAMEOVER: 2     // lost the game -> game over 
+            GAMEOVER: 2,    // lost the game -> game over 
+            WIN: 3          // WIN the game 
         }
 
         // The different states of one item 
@@ -45,10 +46,15 @@
         $scope.playAreaSizeY = 3; 
         $scope.score  = 0; 
         $scope.live = 3; 
+        // Mole Stats! 
+        $scope.maxEscapedMoles = 10; 
+        $scope.maxCatchedMoles = 3; 
+        $scope.escapedMoles = 0;  
+        $scope.catchedMoles = 0; 
         $scope.gameState = gameStates.NOTSTARTED; 
 
         var init = function(){
-            $scope.resetPlayGround(); 
+            $scope.resetPlayGround(true); 
         }
 
         // ************************************************************************ 
@@ -60,20 +66,31 @@
         $scope.start = function() {
             // stops any running interval to avoid two intervals running at the same time
             $scope.gameState = gameStates.STARTED; 
-            $scope.score = 0; 
-            $scope.live = 3; 
+            $scope.resetGameStats(); 
             // store the interval promise
             promise =  $interval($scope.callAtInterval, $scope.intervalTime);
         };
 
         // stops the interval
         $scope.stop = function() {
+            $scope.resetGameStats(); 
             $interval.cancel(promise);
             $scope.gameState = gameStates.NOTSTARTED; 
         };
+
+        // Reset some gamestats 
+        $scope.resetGameStats = function() {
+            $scope.score = 0; 
+            $scope.escapedMoles = 0; 
+            $scope.catchedMoles = 0; 
+            $scope.live = 3; 
+        }
         
         // Interval magic 
         $scope.callAtInterval = function() {
+            $scope.checkEscapedMoles(); 
+            $scope.checkWin(); 
+            $scope.checkGameOver(); 
             $scope.resetPlayGround(); 
             $scope.setMaulwurf(); 
             $scope.setMalte(); 
@@ -87,6 +104,20 @@
         // ************************************************************************ 
         // logical game mechanics  
         // ************************************************************************
+
+        $scope.checkEscapedMoles = function() {
+            var i, j;
+            if (typeof $scope.playArea === 'undefined'){
+                return; 
+            }
+            for ( i = 0; i <  $scope.playAreaSizeX ; i++) {                
+                for (j = 0; j <  $scope.playAreaSizeY ; j++) {
+                    if ($scope.playArea[i][j].state === itemStates.MAULWURF) {
+                        $scope.escapedMoles +=1;  
+                    } 
+                }   
+            }
+        }
 
         // reset the playground 
         $scope.resetPlayGround = function() {
@@ -125,6 +156,18 @@
                 $scope.stop(); 
                 $scope.gameState = gameStates.GAMEOVER;                 
             }
+            if ($scope.escapedMoles >= $scope.maxEscapedMoles){
+                $scope.stop(); 
+                $scope.gameState = gameStates.GAMEOVER;    
+            }
+        }
+
+        // check win state 
+        $scope.checkWin = function() {
+            if ($scope.catchedMoles >= $scope.maxCatchedMoles){
+                $scope.stop(); 
+                $scope.gameState = gameStates.WIN;                 
+            }
         }
 
         // ************************************************************************ 
@@ -136,6 +179,7 @@
             if (item.state === itemStates.MAULWURF) {
                 item.state = itemStates.EMPTY; 
                 item.styling = $scope.setStyling(itemStates.EMPTY); 
+                $scope.catchedMoles += 1;
                 $scope.score += 1; 
             } else if (item.state === itemStates.MALTE) {                
                 $scope.score -= 5;
@@ -173,9 +217,24 @@
                 return false; 
         }
 
+        $scope.isNotStarted = function(){
+            if ($scope.gameState === gameStates.NOTSTARTED )
+                return true; 
+            else 
+                return false; 
+        }
+
         // checks if the game ist game over 
         $scope.isGameOver = function(){
             if ($scope.gameState === gameStates.GAMEOVER )
+                return true; 
+            else 
+                return false; 
+        }
+
+        // checks if the game ist game over 
+        $scope.isWon = function(){
+            if ($scope.gameState === gameStates.WIN )
                 return true; 
             else 
                 return false; 

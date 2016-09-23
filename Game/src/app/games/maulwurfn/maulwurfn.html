@@ -16,6 +16,17 @@
             <span style="font-size:24px;">Leben: </span> <span style="font-size:24px;" class="badge">{{live}}</span>
         </div>
     </div>
+    <div class="row">
+        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12">
+            <span style="font-size:24px;">Entkommene Maulwürfe: </span> <span style="font-size:24px;" class="badge">{{escapedMoles}}  /  {{maxEscapedMoles}}</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12">
+            <span style="font-size:24px;">Gefangene Maulwürfe: </span> <span style="font-size:24px;" class="badge">{{catchedMoles}}  /  {{maxCatchedMoles}}</span>
+        </div>
+    </div>
 
     <br/>
 
@@ -40,8 +51,11 @@
                 <div ng-show="isGameOver()" >
                     <span style="font-size:24px;" class="label label-danger">GAME OVER!!!</span>
                 </div>
-                <div ng-show="!isGameOver()"  >
+                <div ng-show="isNotStarted()"  >
                     <span style="font-size:24px;" class="text-center label label-primary">Spiel ist nicht gestartet! </span>
+                </div>    
+                <div ng-show="isWon()"  >
+                    <span style="font-size:24px;" class="text-center label label-success">Spiel gewonnen! </span>
                 </div>    
             </div>
         </div>
