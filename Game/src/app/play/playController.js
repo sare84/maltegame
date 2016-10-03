@@ -7,12 +7,11 @@
      *
      * @param $scope
      */
-    function playController($scope, resourceService) {
+    function playController($scope) {
         $scope.resources = null;
         console.log("playControllerScope");
         var init = function(){
-            console.log("playControllerScope");
-            $scope.resources = resourceService.getResources();
+
         }
 
         init();

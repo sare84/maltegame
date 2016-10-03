@@ -1,14 +1,14 @@
 !function ($, jQuery) {
     "use strict";
 
-    app.module.directive('gameItem', function () {
+    app.module.directive('clickSection', function () {
         return {
             restrict: 'E',
-            templateUrl: 'directives/gameItem/gameItem.html',
+            templateUrl: 'stats/directives/clickSection/clickSection.html',
             scope: {
                 itemtext: '@',
-                gamelink: '@',
-                icon: '='
+                value: '=',
+                icon: '@'
             },
             link: function (scope, element, attrs) {
             }

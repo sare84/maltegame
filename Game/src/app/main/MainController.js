@@ -7,12 +7,11 @@
      *
      * @param $scope
      */
-    function mainController($scope, resourceService) {
+    function mainController($scope) {
         $scope.resources = null;
         console.log("mainCtrlScope");
         var init = function(){
-            console.log("Test");
-            $scope.resources = resourceService.getResources();
+
         }
 
         init();

@@ -91,6 +91,22 @@
 	
 }
 
+.malteIcon {	
+	background-image: url("../assets/malte2.jpg");  
+	background-size: 60px 60px;
+	float: left;
+	width: 60px;
+	height: 60px;
+}
+
+.maulwurfIcon {	
+	background-image: url("../assets/maulwurf1.jpg");  
+	background-size: 60px 60px;
+	float: left;
+	width: 60px;
+	height: 60px;
+}
+
 .malteField{
 	background-image: url("../assets/malte2.jpg");  
 	background-size: 60px 60px;	

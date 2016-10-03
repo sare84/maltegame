@@ -8,7 +8,7 @@
      * @param $scope
      * @param $interval
      */
-    function maulwurfnController($scope ,$interval) {
+    function maulwurfnController($scope ,$interval, clickService) {
 
         // different game states 
         var gameStates = {
@@ -55,6 +55,7 @@
 
         var init = function(){
             $scope.resetPlayGround(true); 
+            $scope.clickService = clickService; 
         }
 
         // ************************************************************************ 
@@ -181,11 +182,14 @@
                 item.styling = $scope.setStyling(itemStates.EMPTY); 
                 $scope.catchedMoles += 1;
                 $scope.score += 1; 
+                $scope.clickService.moleClicked(); 
             } else if (item.state === itemStates.MALTE) {                
                 $scope.score -= 5;
                 $scope.live -= 1; 
+                $scope.clickService.malteClicked(); 
                 $scope.checkGameOver();  
             } else {
+                $scope.clickService.lawnClicked(); 
                 $scope.score -= 1; 
             }
         }
