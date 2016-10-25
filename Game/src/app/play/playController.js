@@ -8,10 +8,7 @@
      * @param $scope
      */
     function playController($scope) {
-        $scope.resources = null;
-        console.log("playControllerScope");
         var init = function(){
-
         }
 
         init();

@@ -8,7 +8,7 @@
             scope: {
                 itemtext: '@',
                 gamelink: '@',
-                icon: '='
+                icon: '@'
             },
             link: function (scope, element, attrs) {
             }

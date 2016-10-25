@@ -8,11 +8,11 @@
      * @param $scope
      */
     function mainController($scope) {
-        $scope.resources = null;
-        console.log("mainCtrlScope");
-        var init = function(){
+
+        var init = function(){            
 
         }
+
 
         init();
     }

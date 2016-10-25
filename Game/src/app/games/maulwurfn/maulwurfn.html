@@ -28,8 +28,19 @@
         </div>
     </div>
 
-    <br/>
+    <!-- start and stop buttons -->
+    <div class="row">
+        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12">
+            <!-- Event trigger to start the interval -->
+            <button type="button" style="font-size:24px;" class="btn btn-primary fa fa-play fa-3" ng-click="start()"> Start Spiel</button>
 
+            <!-- Event trigger to stop the interval -->
+            <button type="button" style="font-size:24px;" class="btn btn-danger fa fa-stop fa-3" ng-click="stop()"> Stoppe Spiel</button>
+        </div>
+    </div>
+
+    <br/>
+    <!-- Show playground -->
     <div class="row">
         <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12">
             <div ng-show="isStarted()" class="maulwurfnSpielfeld">
@@ -44,7 +55,7 @@
         </div>
     </div>
 
-
+    <!-- Game status -->
     <div class="row">
         <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12">
             <div ng-show="!isStarted()" class="maulwurfnSpielfeld">
@@ -58,17 +69,6 @@
                     <span style="font-size:24px;" class="text-center label label-success">Spiel gewonnen! </span>
                 </div>    
             </div>
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12">
-            <!-- Event trigger to start the interval -->
-            <button type="button" style="font-size:24px;" class="btn btn-primary fa fa-play fa-3" ng-click="start()"> Start Spiel</button>
-
-            <!-- Event trigger to stop the interval -->
-            <button type="button" style="font-size:24px;" class="btn btn-danger fa fa-stop fa-3" ng-click="stop()"> Stoppe Spiel</button>
         </div>
     </div>
 </div>
