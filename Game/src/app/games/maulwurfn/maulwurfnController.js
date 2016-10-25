@@ -8,7 +8,7 @@
      * @param $scope
      * @param $interval
      */
-    function maulwurfnController($scope ,$interval, clickService, maulwurfnGameService) {
+    function maulwurfnController($scope ,$interval, clickService, maulwurfnGameService, maulwurfnLevelService) {
 
         // different game states 
         var gameStates = {
@@ -43,21 +43,21 @@
         var promise;
 
         // setting some data 
-        $scope.resources = null;
         $scope.playArea = []; 
-        $scope.intervalTime = 2500; 
-        $scope.playAreaSizeX = 3; 
-        $scope.playAreaSizeY = 3; 
         $scope.score  = 0; 
-        $scope.live = 3; 
         // Mole Stats! 
-        $scope.maxEscapedMoles = 10; 
-        $scope.maxCatchedMoles = 10; 
         $scope.escapedMoles = 0;  
         $scope.catchedMoles = 0; 
         $scope.gameState = gameStates.NOTSTARTED; 
 
+        $scope.testChange = function(){
+            $scope.resetPlayGround(true); 
+        }
+
         var init = function(){
+            $scope.levelData = maulwurfnLevelService.getAllLevelData(); 
+            $scope.level = $scope.levelData[0];    
+
             $scope.resetPlayGround(true); 
             $scope.clickService = clickService; 
         }
@@ -74,7 +74,7 @@
             maulwurfnGameService.addGamesPlayed(); 
             $scope.resetGameStats(); 
             // store the interval promise
-            promise =  $interval($scope.callAtInterval, $scope.intervalTime);
+            promise =  $interval($scope.callAtInterval, $scope.level.speed);
         };
 
         // stops the interval
@@ -90,10 +90,10 @@
 
         // Reset some gamestats 
         $scope.resetGameStats = function() {
+            
             $scope.score = 0; 
             $scope.escapedMoles = 0; 
             $scope.catchedMoles = 0; 
-            $scope.live = 3; 
         }
         
         // Interval magic 
@@ -120,8 +120,8 @@
             if (typeof $scope.playArea === 'undefined'){
                 return; 
             }
-            for ( i = 0; i <  $scope.playAreaSizeX ; i++) {                
-                for (j = 0; j <  $scope.playAreaSizeY ; j++) {
+            for ( i = 0; i <  $scope.level.sizeX ; i++) {                
+                for (j = 0; j <  $scope.level.sizeY ; j++) {
                     if ($scope.playArea[i][j].state === itemStates.MOLE) {
                         $scope.escapedMoles +=1;  
                         maulwurfnGameService.addEscapedMoles(1); 
@@ -133,9 +133,10 @@
         // reset the playground 
         $scope.resetPlayGround = function() {
             var i, j;
-            for ( i = 0; i <  $scope.playAreaSizeX ; i++) {
+            $scope.playArea = []; 
+            for ( i = 0; i <  $scope.level.sizeX ; i++) {
                 $scope.playArea[i] = []; 
-                for (j = 0; j <  $scope.playAreaSizeY ; j++) {
+                for (j = 0; j <  $scope.level.sizeY ; j++) {
                     $scope.playArea[i][j] = new Item(i,j); 
                 }   
             }
@@ -143,16 +144,16 @@
 
         // setting the maulwurf to the playground 
         $scope.setMaulwurf = function(){
-            var mwX = getRandomInt(1, $scope.playAreaSizeX) - 1
-            var mwY = getRandomInt(1, $scope.playAreaSizeY) - 1 
+            var mwX = getRandomInt(1, $scope.level.sizeX) - 1
+            var mwY = getRandomInt(1, $scope.level.sizeY) - 1 
             $scope.playArea[mwX][mwY].state = itemStates.MOLE; 
             $scope.playArea[mwX][mwY].styling = $scope.setStyling($scope.playArea[mwX][mwY].state); 
         }
 
         // set the dog to the playground 
         $scope.setMalte = function(){
-            var mwX = getRandomInt(1, $scope.playAreaSizeX) - 1
-            var mwY = getRandomInt(1, $scope.playAreaSizeY) - 1 
+            var mwX = getRandomInt(1, $scope.level.sizeX) - 1
+            var mwY = getRandomInt(1, $scope.level.sizeY) - 1 
             if ($scope.playArea[mwX][mwY].state === itemStates.MOLE){
                 $scope.setMalte(); 
                 return; 
@@ -163,10 +164,10 @@
 
         // check gameover state 
         $scope.checkGameOver = function() {
-            if ($scope.live < 1){
+            if ($scope.level.lives < 1){
                 $scope.gameState = gameStates.GAMEOVER;                 
             }
-            if ($scope.escapedMoles >= $scope.maxEscapedMoles){
+            if ($scope.escapedMoles >= $scope.level.escapedMoles){
                 $scope.gameState = gameStates.GAMEOVER;    
             }
             if ($scope.gameState === gameStates.GAMEOVER){
@@ -178,9 +179,10 @@
 
         // check win state 
         $scope.checkWin = function() {
-            if ($scope.catchedMoles >= $scope.maxCatchedMoles){
+            if ($scope.catchedMoles >= $scope.level.molesToCatch){
                 maulwurfnGameService.addGamesWon(); 
                 maulwurfnGameService.setHighScore($scope.score); 
+                maulwurfnGameService.setMaxLevel($scope.level.level+1);
                 $scope.stop(); 
                 $scope.gameState = gameStates.WIN;                 
             }
@@ -206,7 +208,7 @@
                 $scope.clickService.moleClicked(); 
             } else if (item.state === itemStates.MALTE) {                
                 $scope.setPoints(MALTEPOINTS); 
-                $scope.live -= 1; 
+                $scope.level.lives -= 1; 
                 $scope.clickService.malteClicked(); 
                 $scope.checkGameOver();  
             } else {

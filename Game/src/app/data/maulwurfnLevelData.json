@@ -1,0 +1,35 @@
+[
+    {
+        "level" : 1, 
+        "speed" : 3000, 
+        "numMoles" : 1, 
+        "sizeX" : 3, 
+        "sizeY" : 3, 
+        "lives" : 3, 
+        "molesToCatch" : 5, 
+        "escapedMoles" : 10, 
+        "text" : "Level 1 - Start"
+    },
+    {
+        "level" : 1, 
+        "speed" : 2000, 
+        "numMoles" : 1, 
+        "sizeX" : 3, 
+        "sizeY" : 3, 
+        "lives" : 2, 
+        "molesToCatch" : 5, 
+        "escapedMoles" : 10, 
+        "text" : "Level 2 - Schneller"
+    },
+    {
+        "level" : 1, 
+        "speed" : 1500, 
+        "numMoles" : 1, 
+        "sizeX" : 3, 
+        "sizeY" : 3, 
+        "lives" : 2, 
+        "molesToCatch" : 5, 
+        "escapedMoles" : 10, 
+        "text" : "Level 3 - Noch Schneller"
+    }
+]

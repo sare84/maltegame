@@ -20,7 +20,7 @@
             this.stats.gamesLost = 0;
             this.stats.allPoints = 0;
             this.stats.highscore = 0;
-            this.stats.levelsPlayed = 0; 
+            this.stats.maxLevel = 0; 
             this.stats.escapedMoles = 0;     
         }
 
@@ -80,12 +80,22 @@
             }
             this.saveStats(); 
         }
+
+        this.setMaxLevel = function(level) {
+            this.setStats(); 
+            if (this.stats.maxLevel < level) {
+                this.stats.maxLevel = level; 
+            }
+            this.saveStats(); 
+        }
         
         this.addEscapedMoles = function(number) {
             this.setStats(); 
             this.stats.escapedMoles+=number; 
             this.saveStats(); 
         }
+
+
 
 
     }
