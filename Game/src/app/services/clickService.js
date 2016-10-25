@@ -13,6 +13,15 @@
 
         init();
 
+        // creates a new object 
+        this.newDataObject = function(){
+            this.clickObject = new Object();
+            this.clickObject.all = 0; 
+            this.clickObject.malte =  0;
+            this.clickObject.mole = 0;
+            this.clickObject.lawn = 0;            
+        }
+
         // load clicks 
         this.getClicks = function(){
             this.setClicks(); 
@@ -23,17 +32,19 @@
         this.setClicks = function(){
             this.clickObject = localStorageService.loadSavedClicks(); 
             if (!this.clickObject) {
-                this.clickObject = new Object();
-                this.clickObject.all = 0; 
-                this.clickObject.malte =  0;
-                this.clickObject.mole = 0;
-                this.clickObject.lawn = 0;
+                this.newDataObject(); 
             } 
         }
 
         // save clicks 
         this.saveClicks = function(){
             localStorageService.saveClickStats(this.clickObject); 
+        }
+
+        // resets data 
+        this.resetData = function(){
+            this.newDataObject(); 
+            this.saveClicks(); 
         }
 
         // specific click action for malte clicked 

@@ -13,6 +13,17 @@
 
         init();
 
+        this.newDataObject = function(){
+            this.stats = new Object();
+            this.stats.gamesPlayed = 0; 
+            this.stats.gamesWon =  0;
+            this.stats.gamesLost = 0;
+            this.stats.allPoints = 0;
+            this.stats.highscore = 0;
+            this.stats.levelsPlayed = 0; 
+            this.stats.escapedMoles = 0;     
+        }
+
         // load clicks 
         this.getStats = function(){
             this.setStats(); 
@@ -23,20 +34,19 @@
         this.setStats = function(){
             this.stats = localStorageService.loadMaulwurfnGameStats(); 
             if (!this.stats) {
-                this.stats = new Object();
-                this.stats.gamesPlayed = 0; 
-                this.stats.gamesWon =  0;
-                this.stats.gamesLost = 0;
-                this.stats.allPoints = 0;
-                this.stats.highscore = 0;
-                this.stats.levelsPlayed = 0; 
-                this.stats.escapedMoles = 0;                 
+                 this.newDataObject(); 
             } 
         }
 
         // save clicks 
         this.saveStats = function(){
             localStorageService.saveMaulwurfnGameStats(this.stats); 
+        }
+
+        // resets data 
+        this.resetData = function(){
+            this.newDataObject(); 
+            this.saveStats(); 
         }
 
         this.addGamesPlayed = function(){

@@ -6,73 +6,73 @@
 
 
 
-<div class="container">
+        <div class="container">
 
-    <div class="row">
-        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12">
-            <span style="font-size:24px;">Score: </span> <span style="font-size:24px;" class="badge">{{score}}</span>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12">
-            <span style="font-size:24px;">Leben: </span> <span style="font-size:24px;" class="badge">{{live}}</span>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12">
-            <span style="font-size:24px;">Entkommene Maulwürfe: </span> <span style="font-size:24px;" class="badge">{{escapedMoles}}  /  {{maxEscapedMoles}}</span>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12">
-            <span style="font-size:24px;">Gefangene Maulwürfe: </span> <span style="font-size:24px;" class="badge">{{catchedMoles}}  /  {{maxCatchedMoles}}</span>
-        </div>
-    </div>
-
-    <!-- start and stop buttons -->
-    <div class="row">
-        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12">
-            <!-- Event trigger to start the interval -->
-            <button type="button" style="font-size:24px;" class="btn btn-success fa fa-play fa-3" ng-click="start()"> Starte Spiel</button>
-
-            <!-- Event trigger to stop the interval -->
-            <button type="button" style="font-size:24px;" class="btn btn-danger fa fa-stop fa-3" ng-click="stop()"> Stoppe Spiel</button>
-        </div>
-    </div>
-
-    <br/>
-    <!-- Show playground -->
-    <div class="row">
-        <div ng-show="isStarted()" class="col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12 maulwurfnSpielfeld">       
-            <div class="row" ng-repeat="row in playArea">
-                <div ng-class="item.fieldBackground" ng-repeat="item in row track by $index" ng-click="select(item)">
-                    <div ng-class="item.styling">
-                        <span>{{item.text}}</span>
-                    </div>
-                </div>                
-            </div>
-        </div>
-    </div>
-
-    <!-- Game status -->
-    <div class="row">
-        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12">
-            <div ng-show="!isStarted()" class="maulwurfnSpielfeld">
-                <div ng-show="isGameOver()" >
-                    <span style="font-size:24px;" class="label label-danger">GAME OVER!!!</span>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                    <span style="font-size:24px;">Score: </span> <span style="font-size:24px;" class="badge">{{score}}</span>
                 </div>
-                <div ng-show="isNotStarted()"  >
-                    <span style="font-size:24px;" class="text-center label label-primary">Spiel ist nicht gestartet! </span>
-                </div>    
-                <div ng-show="isWon()"  >
-                    <span style="font-size:24px;" class="text-center label label-success">Spiel gewonnen! </span>
-                </div>    
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                    <span style="font-size:24px;">Leben: </span> <span style="font-size:24px;" class="badge">{{live}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                    <span style="font-size:24px;">Entkommene Maulwürfe: </span> <span style="font-size:24px;" class="badge">{{escapedMoles}}  /  {{maxEscapedMoles}}</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                    <span style="font-size:24px;">Gefangene Maulwürfe: </span> <span style="font-size:24px;" class="badge">{{catchedMoles}}  /  {{maxCatchedMoles}}</span>
+                </div>
+            </div>
+
+            <!-- start and stop buttons -->
+            <div class="row">
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                    <!-- Event trigger to start the interval -->
+                    <button type="button" style="font-size:24px;" class="btn btn-success fa fa-play fa-3" ng-click="start()"> Starte Spiel</button>
+
+                    <!-- Event trigger to stop the interval -->
+                    <button type="button" style="font-size:24px;" class="btn btn-danger fa fa-stop fa-3" ng-click="stop()"> Stoppe Spiel</button>
+                </div>
+            </div>
+
+            <br/>
+            <!-- Show playground -->
+            <div class="row">
+                <div ng-show="isStarted()" class="col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12 maulwurfnSpielfeld">       
+                    <div class="row" ng-repeat="row in playArea">
+                        <div ng-class="item.fieldBackground" ng-repeat="item in row track by $index" ng-click="select(item)">
+                            <div ng-class="item.styling">
+                                <span>{{item.text}}</span>
+                            </div>
+                        </div>                
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game status -->
+            <div class="row">
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                    <div ng-show="!isStarted()" class="maulwurfnSpielfeld">
+                        <div ng-show="isGameOver()" >
+                            <span style="font-size:24px;" class="label label-danger">GAME OVER!!!</span>
+                        </div>
+                        <div ng-show="isNotStarted()"  >
+                            <span style="font-size:24px;" class="text-center label label-primary">Spiel ist nicht gestartet! </span>
+                        </div>    
+                        <div ng-show="isWon()"  >
+                            <span style="font-size:24px;" class="text-center label label-success">Spiel gewonnen! </span>
+                        </div>    
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
     </div><!-- /.box-body --> 
 
