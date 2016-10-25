@@ -8,7 +8,7 @@
      * @param $scope
      * @param $interval
      */
-    function maulwurfnController($scope ,$interval) {
+    function maulwurfnController($scope ,$interval, clickService, maulwurfnGameService) {
 
         // different game states 
         var gameStates = {
@@ -21,9 +21,13 @@
         // The different states of one item 
         var itemStates = {
             EMPTY: 0,       // no special state 
-            MAULWURF: 1,    // you should hit this 
+            MOLE: 1,    // you should hit this 
             MALTE: 2        // the mighty dog ;) 
         };
+
+        var MALTEPOINTS = -10; 
+        var LAWNPOINTS = -5; 
+        var MOLEPOINTS = 10; 
 
         // playground item 
         function Item(x, y) {
@@ -48,13 +52,14 @@
         $scope.live = 3; 
         // Mole Stats! 
         $scope.maxEscapedMoles = 10; 
-        $scope.maxCatchedMoles = 3; 
+        $scope.maxCatchedMoles = 10; 
         $scope.escapedMoles = 0;  
         $scope.catchedMoles = 0; 
         $scope.gameState = gameStates.NOTSTARTED; 
 
         var init = function(){
             $scope.resetPlayGround(true); 
+            $scope.clickService = clickService; 
         }
 
         // ************************************************************************ 
@@ -66,6 +71,7 @@
         $scope.start = function() {
             // stops any running interval to avoid two intervals running at the same time
             $scope.gameState = gameStates.STARTED; 
+            maulwurfnGameService.addGamesPlayed(); 
             $scope.resetGameStats(); 
             // store the interval promise
             promise =  $interval($scope.callAtInterval, $scope.intervalTime);
@@ -75,7 +81,11 @@
         $scope.stop = function() {
             $scope.resetGameStats(); 
             $interval.cancel(promise);
-            $scope.gameState = gameStates.NOTSTARTED; 
+            if ($scope.gameState === gameStates.GAMEOVER){
+                $scope.gameState = gameStates.GAMEOVER; 
+            } else {
+                $scope.gameState = gameStates.NOTSTARTED; 
+            }
         };
 
         // Reset some gamestats 
@@ -112,11 +122,12 @@
             }
             for ( i = 0; i <  $scope.playAreaSizeX ; i++) {                
                 for (j = 0; j <  $scope.playAreaSizeY ; j++) {
-                    if ($scope.playArea[i][j].state === itemStates.MAULWURF) {
+                    if ($scope.playArea[i][j].state === itemStates.MOLE) {
                         $scope.escapedMoles +=1;  
+                        maulwurfnGameService.addEscapedMoles(1); 
                     } 
                 }   
-            }
+            }            
         }
 
         // reset the playground 
@@ -134,7 +145,7 @@
         $scope.setMaulwurf = function(){
             var mwX = getRandomInt(1, $scope.playAreaSizeX) - 1
             var mwY = getRandomInt(1, $scope.playAreaSizeY) - 1 
-            $scope.playArea[mwX][mwY].state = itemStates.MAULWURF; 
+            $scope.playArea[mwX][mwY].state = itemStates.MOLE; 
             $scope.playArea[mwX][mwY].styling = $scope.setStyling($scope.playArea[mwX][mwY].state); 
         }
 
@@ -142,7 +153,7 @@
         $scope.setMalte = function(){
             var mwX = getRandomInt(1, $scope.playAreaSizeX) - 1
             var mwY = getRandomInt(1, $scope.playAreaSizeY) - 1 
-            if ($scope.playArea[mwX][mwY].state === itemStates.MAULWURF){
+            if ($scope.playArea[mwX][mwY].state === itemStates.MOLE){
                 $scope.setMalte(); 
                 return; 
             }
@@ -153,18 +164,23 @@
         // check gameover state 
         $scope.checkGameOver = function() {
             if ($scope.live < 1){
-                $scope.stop(); 
                 $scope.gameState = gameStates.GAMEOVER;                 
             }
             if ($scope.escapedMoles >= $scope.maxEscapedMoles){
-                $scope.stop(); 
                 $scope.gameState = gameStates.GAMEOVER;    
+            }
+            if ($scope.gameState === gameStates.GAMEOVER){
+                $scope.stop(); 
+                maulwurfnGameService.addGamesLost(); 
+                maulwurfnGameService.setHighScore($scope.score); 
             }
         }
 
         // check win state 
         $scope.checkWin = function() {
             if ($scope.catchedMoles >= $scope.maxCatchedMoles){
+                maulwurfnGameService.addGamesWon(); 
+                maulwurfnGameService.setHighScore($scope.score); 
                 $scope.stop(); 
                 $scope.gameState = gameStates.WIN;                 
             }
@@ -174,25 +190,35 @@
         // Gui Functions 
         // ************************************************************************
 
+        // sets the points 
+        $scope.setPoints = function(points){
+            $scope.score += points;     
+            maulwurfnGameService.addAllPoints(points); 
+        }
+
         // item is selected -> game mechanic 
         $scope.select = function(item) {
-            if (item.state === itemStates.MAULWURF) {
+            if (item.state === itemStates.MOLE) {
+                $scope.setPoints(MOLEPOINTS);  
                 item.state = itemStates.EMPTY; 
                 item.styling = $scope.setStyling(itemStates.EMPTY); 
                 $scope.catchedMoles += 1;
-                $scope.score += 1; 
+                $scope.clickService.moleClicked(); 
             } else if (item.state === itemStates.MALTE) {                
-                $scope.score -= 5;
+                $scope.setPoints(MALTEPOINTS); 
                 $scope.live -= 1; 
+                $scope.clickService.malteClicked(); 
                 $scope.checkGameOver();  
             } else {
-                $scope.score -= 1; 
+                $scope.setPoints(LAWNPOINTS); 
+                $scope.clickService.lawnClicked(); 
+               
             }
         }
 
         // Styling and mode functions for gui 
         $scope.setStyling = function(state) {
-            if (state === itemStates.MAULWURF){
+            if (state === itemStates.MOLE){
                 var rnd = getRandomInt(1,2); 
                 return "circle maulwurfField" + rnd;
             }  

@@ -37,6 +37,12 @@
                 templateUrl: "stats/stats.html",
                 controller: "statsController"
             })
+            .state(
+            'all.settings', {
+                url: "/settings",
+                templateUrl: "settings/settings.html",
+                controller: "settingsController"
+            })
 
 
             .state(

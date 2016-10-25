@@ -6,68 +6,60 @@
 	width: 100%;
 }
 
-.square {	
+.square, .square0, .square1 , .square2 , 
+	.square3, .square4, .square5, 
+	.malteIcon , .maulwurfIcon,     
+	.malteField, .maulwurfField, .maulwurfField1, .maulwurfField2
 
-	background-color: green; 
-	background-size: 60px 60px;
+	{	
+	background-size: 75px 75px;
 	float: left;
-	width: 60px;
-	height: 60px;
+	width: 75px;
+	height: 75px;
 }
 
 .square0 {	
 	background-image: url("../assets/nix00.jpg");  
-	background-size: 60px 60px;
 	float: left;
-	width: 60px;
-	height: 60px;
 }
 
 .square1 {	
 	background-image: url("../assets/nix01.jpg");  
-	background-size: 60px 60px;
 	float: left;
-	width: 60px;
-	height: 60px;
 }
 
 .square2 {	
 	background-image: url("../assets/nix02.jpg");  
-	background-size: 60px 60px;
 	float: left;
-	width: 60px;
-	height: 60px;
 }
 
 .square3 {	
 	background-image: url("../assets/nix03.jpg");  
-	background-size: 60px 60px;
 	float: left;
-	width: 60px;
-	height: 60px;
 }
 
 .square4 {	
 	background-image: url("../assets/nix04.jpg");  
-	background-size: 60px 60px;
 	float: left;
-	width: 60px;
-	height: 60px;
 }
 
 .square5 {	
 	background-image: url("../assets/nix05.jpg");  
-	background-size: 60px 60px;
 	float: left;
-	width: 60px;
-	height: 60px;
 }
-
-	
 
 .square:hover {
 	cursor: pointer;
 	opacity: .8;
+}
+
+.squareLawn {	
+	background-image: url("../assets/nix04.jpg");  
+	float: left;
+	background-size: 75px 75px;
+	float: left;
+	width: 75px;
+	height: 75px;
 }
 
 .circle {
@@ -82,31 +74,75 @@
 
 .maulwurfnSpielfeld {
 	float: center;
-	width: 500px;
-	height: 500px;
+	width: 600px;
+	height: 600px;
 }
 
-.emptyField {
-	
-	
+.malteIcon {	
+	background-image: url("../assets/malte2.jpg");  
+	float: left;
+}
+
+.maulwurfIcon {	
+	background-image: url("../assets/maulwurf1.jpg");  
+	float: left;
 }
 
 .malteField{
 	background-image: url("../assets/malte2.jpg");  
-	background-size: 60px 60px;	
 }
 
 .maulwurfField{
 	background-image: url("../assets/maulwurf1.jpg");  
-	background-size: 60px 60px;
 }
 
 .maulwurfField1{
 	background-image: url("../assets/maulwurf1.jpg");  
-	background-size: 60px 60px;
 }
 
 .maulwurfField2{
 	background-image: url("../assets/maulwurf2.jpg");  
-	background-size: 60px 60px;
 }
+
+.instagramLink {	
+	background-image: url("../assets/instagram.jpg");   
+	background-size:     contain;                    
+    background-repeat:   no-repeat;
+    background-position: center center;
+	display: block; 
+	max-width: 100%;
+	height: auto; 
+	border: none; 
+	width: 640px;
+	height: 240px;
+	float: left;
+}
+
+.playLinkMaulwurfn {
+	background-image: url("../assets/Maulwurfn_png.png"); 
+	background-size:     contain;                     
+    background-repeat:   no-repeat;
+    background-position: center center;
+	display: block; 
+	max-width: 100%;
+	height: auto; 
+	border: none; 
+	width: 640px;
+	height: 120px;
+	float: left;
+}
+
+.titelPic {
+	background-image: url("../assets/titel.jpg"); 
+	background-size:     contain;                     
+    background-repeat:   no-repeat;
+    background-position: center center;
+	display: block; 
+	max-width: 100%;
+	height: auto; 
+	border: none; 
+	width: 640px;
+	height: 240px;
+	float: left;
+}
+

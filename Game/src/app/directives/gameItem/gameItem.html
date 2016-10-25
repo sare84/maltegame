@@ -1,9 +1,16 @@
-<div class="col-md-3 col-sm-6 col-xs-12">
-    <div class="info-box bg-gray">
-        <span class="info-box-icon bg-black"><i ng-class=icon></i></span>
-        <div class="info-box-content bg-gray">
-            <span class="info-box-text" ng-bind=itemtext></span>
-            <span class="info-box-number"  ng-bind=value></span>
-        </div><!-- /.info-box-content -->
+
+
+
+<div class="box box-primary box-solid">
+    <div class="box-header with-border">
+        <h3 class="box-title">{{itemtext}}</h3>
+    </div><!-- /.box-header -->
+    <div class="box-body">       
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <a ui-sref="{{gamelink}}">
+                <div class="{{icon}}">                 
+                </div><!-- /.info-box-content -->
+            </a> 
+        </div>
     </div>
 </div>

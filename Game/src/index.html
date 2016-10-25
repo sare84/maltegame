@@ -5,14 +5,13 @@
     <title>Malte on Tour</title>
     <link rel="stylesheet" href="styles/vendor.css" />
     <link rel="stylesheet" href="styles/app.css" />
-
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 </head>
-<body class="skin-blue sidebar-mini" ng-app="clickgame">
+<body class="skin-blue sidebar-mini" ng-app="malteOnTour">
     <div class="wrapper">
         <header class="main-header">
             <!-- Logo -->
-            <a href="/" class="logo">
+            <a ui-sref="all.main" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
 
                 <!-- logo for regular state and mobile devices -->
@@ -31,16 +30,16 @@
         <aside class="main-sidebar">
             <!-- sidebar: style can be found in sidebar.less -->
             <section class="sidebar">
-                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <!-- sidebar menu: : style can be found in sidebar.less  -->
                 <ul class="sidebar-menu">
                     <li class="active treeview">
                         <ul class="sidebar-menu">
-                            <li><a ui-sref="all.main"><i class="fa fa-home"></i> <span>Home</span> </a></li>
+                            <li><a ui-sref="all.main"><i class="fa fa-home"></i> <span>Start</span> </a></li>
                             <li><a ui-sref="all.play"><i class="fa fa-play"></i> <span>Play</span> </a> </li>
-                            <li><a ui-sref="all.stats"><i class="fa fa-bar-chart"></i><span> Stats</span></a></li>
-                            <li><a ui-sref="all.achievements"><i class="fa fa-trophy"></i><span> Achievements </span></a> </li>
-                            <li><a ui-sref="all.about"><i class="fa fa-info"></i><span> About </span></a> </li>
-                            <li><a ui-sref="all.settings"><i class="fa fa-cog"></i><span> Settings </span></a> </li>
+                            <li><a ui-sref="all.stats"><i class="fa fa-bar-chart"></i><span> Statistiken</span></a></li>
+                            <!-- <li><a ui-sref="all.achievements"><i class="fa fa-trophy"></i><span> Achievements </span></a> </li>-->
+                            <li><a ui-sref="all.about"><i class="fa fa-info"></i><span> Informationen </span></a> </li>
+                            <li><a ui-sref="all.settings"><i class="fa fa-cog"></i><span> Einstellungen </span></a> </li>
                         </ul>
                     </li>
                 </ul>
@@ -59,14 +58,14 @@
 
         <footer class="main-footer">
             <div class="pull-right hidden-xs">
-                <b>Version</b> 0.0.1
+                <b>Version</b> 0.0.5
             </div>
             <strong>Copyright &copy; 2015 sare.</strong> All rights reserved.
         </footer>
 
     </div>
     <script type="text/javascript" src="scripts/vendor.js"></script>
-   <script type="text/javascript" src="scripts/templates.js"></script>
+    <script type="text/javascript" src="scripts/templates.js"></script>
     <script type="text/javascript" src="scripts/app.js"></script>
 </body>
 </html>

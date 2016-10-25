@@ -1,0 +1,59 @@
+<html>
+<head>
+<title> Old Sister Day </title>
+
+<body bgcolor="#000000">
+
+<br><br><br><br><br><br>
+<div style="text-align: center;">
+ <span id="c1" style="font: bold 50px arial; color: #639C18;"></span><br>
+ <span id="c2" style="font: bold 50px arial; color: #FFFF10;">;</span><br><br>
+ <span style="font: bold 30px arial; color: #FF0000;"> bis zum Old Sister Day :D</span> <br>
+</div>
+
+
+<script type='text/javascript'>
+// Erstellt mit dem Countdown-Generator - Homepage-Total.de
+// Die Monatsnamen bitte in englisch eintragen (Monatsname, Tag, Jahr, Uhrzeit)
+var end = new Date('October 19, 2017 00:00:00');
+
+function toSt2(n) {
+  var s = '';
+  if (n < 10) {
+   s += '0';
+  }
+  return (s + n).toString();
+}
+
+function toSt3(n) {
+  var s = '';
+  if (n < 10) {
+   s += '00';
+  }
+  else if (n < 100) {
+   s += '0';
+  }
+  return (s + n).toString();
+}
+
+function countdown() {
+  var d = new Date();
+  var count = Math.floor(end.getTime() - d.getTime());
+  if (count > 0) {
+    var miliseconds = toSt3(count%1000); count = Math.floor(count/1000);
+    var seconds = toSt2(count%60); count = Math.floor(count/60);
+    var minutes = toSt2(count%60); count = Math.floor(count/60);
+    var hours = toSt2(count%24); count = Math.floor(count/24);
+    var days = count;
+    document.getElementById('c1').innerHTML = days + ' TAGE';
+    document.getElementById('c2').innerHTML = hours + ':' + minutes + ':' + seconds
+    setTimeout('countdown()', 100);
+  }
+}
+countdown();
+</script>
+
+</body>
+
+</html>
+</head>
