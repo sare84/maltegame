@@ -28,8 +28,9 @@
                 this.stats.gamesWon =  0;
                 this.stats.gamesLost = 0;
                 this.stats.allPoints = 0;
-                this.stats.sessionPoints = 0;
+                this.stats.highscore = 0;
                 this.stats.levelsPlayed = 0; 
+                this.stats.escapedMoles = 0;                 
             } 
         }
 
@@ -38,12 +39,44 @@
             localStorageService.saveMaulwurfnGameStats(this.stats); 
         }
 
-        // specific click action for malte clicked 
         this.addGamesPlayed = function(){
             this.setStats(); 
             this.stats.gamesPlayed++; 
             this.saveStats(); 
         }
+
+        this.addGamesWon = function() {
+            this.setStats(); 
+            this.stats.gamesWon++; 
+            this.saveStats(); 
+        }
+
+        this.addGamesLost = function() {
+            this.setStats(); 
+            this.stats.gamesLost++; 
+            this.saveStats(); 
+        }
+
+        this.addAllPoints = function(points) {
+            this.setStats(); 
+            this.stats.allPoints += points; 
+            this.saveStats(); 
+        }
+
+        this.setHighScore = function(points) {
+            this.setStats(); 
+            if (this.stats.highscore < points) {
+                this.stats.highscore = points; 
+            }
+            this.saveStats(); 
+        }
+        
+        this.addEscapedMoles = function(number) {
+            this.setStats(); 
+            this.stats.escapedMoles+=number; 
+            this.saveStats(); 
+        }
+
 
     }
     app.module.service('maulwurfnGameService', maulwurfnGameService);

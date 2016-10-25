@@ -7,10 +7,11 @@
      *
      * @param $scope
      */
-    function statsController($scope, clickService) {
+    function statsController($scope, clickService, maulwurfnGameService) {
 
         var init = function(){
             $scope.clickdata = clickService.getClicks();
+            $scope.maulwurfnstats = maulwurfnGameService.getStats(); 
         }
 
         init();
