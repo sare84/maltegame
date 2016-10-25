@@ -52,7 +52,7 @@
         $scope.live = 3; 
         // Mole Stats! 
         $scope.maxEscapedMoles = 10; 
-        $scope.maxCatchedMoles = 3; 
+        $scope.maxCatchedMoles = 10; 
         $scope.escapedMoles = 0;  
         $scope.catchedMoles = 0; 
         $scope.gameState = gameStates.NOTSTARTED; 
