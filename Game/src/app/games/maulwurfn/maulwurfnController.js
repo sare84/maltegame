@@ -8,7 +8,7 @@
      * @param $scope
      * @param $interval
      */
-    function maulwurfnController($scope ,$interval, clickService) {
+    function maulwurfnController($scope ,$interval, clickService, maulwurfnGameService) {
 
         // different game states 
         var gameStates = {
@@ -67,6 +67,7 @@
         $scope.start = function() {
             // stops any running interval to avoid two intervals running at the same time
             $scope.gameState = gameStates.STARTED; 
+            maulwurfnGameService.addGamesPlayed(); 
             $scope.resetGameStats(); 
             // store the interval promise
             promise =  $interval($scope.callAtInterval, $scope.intervalTime);

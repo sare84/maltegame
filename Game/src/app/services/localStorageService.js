@@ -7,6 +7,7 @@
      */
     function localStorageService() {
         var clickDataString = 'clickData'; 
+        var maulwurfnGameStatsString = 'maulwurfnGameStats'; 
 
         var init = function() {
         }
@@ -22,6 +23,17 @@
         // save clicks 
         this.saveClickStats = function(clicks){      
             localStorage.setItem(clickDataString, JSON.stringify(clicks) );
+        }
+
+        // load maulwurfn game stats 
+        this.loadMaulwurfnGameStats = function(){
+            var stats = localStorage.getItem(maulwurfnGameStatsString); 
+            return JSON.parse(stats); 
+        }
+
+        // save maulwurfn game stats  
+        this.saveMaulwurfnGameStats = function(gameStats){      
+            localStorage.setItem(maulwurfnGameStatsString, JSON.stringify(gameStats) );
         }
     }
 

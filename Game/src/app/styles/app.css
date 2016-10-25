@@ -136,3 +136,20 @@
 	height: 240px;
 	float: left;
 }
+
+
+.startButton {
+	background-image: url("../assets/icon_play_png.png"); 
+	background-size:     contain;                     
+    background-repeat:   no-repeat;
+    background-position: center center;
+	border: none; 
+	width: 75px;
+	height: 75px;
+	float: left;
+} 
+
+.startButton:hover {
+	cursor: pointer;
+	opacity: .8;
+}
