@@ -5,9 +5,12 @@ This README would normally document whatever steps are necessary to get your app
 ### What is this repository for? ###
 
 * Game about my fathers dog for his 60th birthday 
-* 0.0.5
+* Version 0.1.2
 
 ## Version History 
+
+### 0.1.2
+* Bugfix for reset -> now you'll start with level 1 instead of 0!
 
 ### 0.1.1
 * Added more moles to the mechanic 

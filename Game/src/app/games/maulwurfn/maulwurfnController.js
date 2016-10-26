@@ -151,12 +151,12 @@
                 console.log("mwX :" + mwX );
                 console.log("mwY :" + mwY );  
 
-             if ($scope.playArea[mwX][mwY].state === itemStates.MOLE){
-                 i--; 
-             } else  {
-                $scope.playArea[mwX][mwY].state = itemStates.MOLE; 
-                $scope.playArea[mwX][mwY].styling = $scope.setStyling($scope.playArea[mwX][mwY].state); 
-             }
+                if ($scope.playArea[mwX][mwY].state === itemStates.MOLE){
+                    i--; 
+                } else  {
+                    $scope.playArea[mwX][mwY].state = itemStates.MOLE; 
+                    $scope.playArea[mwX][mwY].styling = $scope.setStyling($scope.playArea[mwX][mwY].state); 
+                }
             }
 
 

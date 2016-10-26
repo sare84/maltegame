@@ -20,7 +20,7 @@
             this.stats.gamesLost = 0;
             this.stats.allPoints = 0;
             this.stats.highscore = 0;
-            this.stats.maxLevel = 0; 
+            this.stats.maxLevel = 1; 
             this.stats.escapedMoles = 0;     
         }
 
