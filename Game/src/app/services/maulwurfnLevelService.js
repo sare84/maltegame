@@ -9,7 +9,6 @@
     function maulwurfnLevelService() {
         var levelData = []; 
 
-
         function Level(level, speed, numMoles, sizeX, sizeY, lives, molesToCatch, escapedMoles, text) {
             this.level = level; 
             this.speed = speed; 
@@ -21,19 +20,7 @@
             this.escapedMoles = escapedMoles; 
             this.text = text;             
         }
-        /* 
 
-                "level" : 1, 
-        "speed" : 3000, 
-        "numMoles" : 1, 
-        "sizeX" : 3, 
-        "sizeY" : 3, 
-        "lives" : 3, 
-        "molesToCatch" : 5, 
-        "escapedMoles" : 10, 
-        "text" : "Level 1 - Start"
-
-*/ 
         this.buildLevelData = function() {
             if (!this.levelData)
             {

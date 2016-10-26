@@ -9,6 +9,10 @@ This README would normally document whatever steps are necessary to get your app
 
 ## Version History 
 
+### 0.1.1
+* Added more moles to the mechanic 
+* Added a much more level for much more fun 
+
 ### 0.1.0
 * Added level support for the game 
 * Now it is possible to create some more level to get more fun 
