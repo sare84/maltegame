@@ -144,10 +144,22 @@
 
         // setting the maulwurf to the playground 
         $scope.setMaulwurf = function(){
-            var mwX = getRandomInt(1, $scope.level.sizeX) - 1
-            var mwY = getRandomInt(1, $scope.level.sizeY) - 1 
-            $scope.playArea[mwX][mwY].state = itemStates.MOLE; 
-            $scope.playArea[mwX][mwY].styling = $scope.setStyling($scope.playArea[mwX][mwY].state); 
+            for ( var i = 1; i <= $scope.level.numMoles; i++) {
+                console.log("Lauf :" + i ); 
+                var mwX = getRandomInt(1, $scope.level.sizeX) - 1;
+                var mwY = getRandomInt(1, $scope.level.sizeY) - 1; 
+                console.log("mwX :" + mwX );
+                console.log("mwY :" + mwY );  
+
+             if ($scope.playArea[mwX][mwY].state === itemStates.MOLE){
+                 i--; 
+             } else  {
+                $scope.playArea[mwX][mwY].state = itemStates.MOLE; 
+                $scope.playArea[mwX][mwY].styling = $scope.setStyling($scope.playArea[mwX][mwY].state); 
+             }
+            }
+
+
         }
 
         // set the dog to the playground 
